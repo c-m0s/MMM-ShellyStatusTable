@@ -1,52 +1,87 @@
-/* --- Shelly Table Black & White Reset --- */
+/* 
+ * MMM-ShellyStatusTable Styling
+ * Minimalist Black & White Version 
+ */
 
-/* 1. Remove outer border, background, and rounded corners */
-.shellyTable {
+/* Main container reset */
+.MMM-ShellyStatusTable {
+    background-color: transparent !important;
     border: none !important;
     border-radius: 0 !important;
-    opacity: 1.0 !important; /* Makes it crisp white instead of faded */
+}
+
+/* The Table itself */
+.shellyTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: none !important; /* Removes outer border */
+    border-radius: 0 !important; /* Removes rounded edges */
+    overflow: visible; 
+    opacity: 1.0 !important; /* Crisp white text */
     background-color: transparent !important;
 }
 
-/* 2. Remove all internal grid lines/borders */
-.shellyTable th, 
-.shellyTable td {
-    border: none !important;
-    background-color: transparent !important;
-    padding: 8px 4px !important; /* Slight vertical spacing for readability */
-}
-
-/* 3. Style the Header (Top Row) */
+/* Header Cells (The original "Gerät / Status / Leistung" row) */
 .shellyTable th {
-    background-color: transparent !important;
-    color: #FFFFFF !important; /* Pure white */
-    border-bottom: 1px solid #444 !important; /* Subtle separator line */
-    font-size: 22px !important;
+    background-color: transparent !important; /* Removes blue background */
+    color: #FFFFFF !important;
+    font-size: 20px !important;
+    padding: 10px 5px !important;
+    border: none !important;
+    border-bottom: 1px solid #444 !important; /* Thin separator line */
+    text-transform: uppercase;
+    font-weight: normal;
 }
 
-/* 4. Reset Row Backgrounds (Removing the blue/white alternating stripes) */
+/* First Column Alignment (Labels) */
+.shellyTable th:first-child, 
+.shellyTable td:first-child {
+    text-align: left;
+    font-weight: normal;
+    color: #AAAAAA !important; /* Dimmed gray for labels */
+}
+
+/* Data Cells (Values) */
+.shellyTable td {
+    border: none !important; /* Removes internal grid lines */
+    padding: 8px 5px !important;
+    text-align: center;
+    background-color: transparent !important;
+    color: #FFFFFF !important; /* Pure white for values */
+    font-size: 18px !important;
+}
+
+/* Row Background Resets (Removes alternating blue/white stripes) */
 .shellyTable tr:nth-child(even),
 .shellyTable tr:nth-child(odd),
 .shellyTable tr:hover {
     background-color: transparent !important;
-    color: #FFFFFF !important; /* Standard mirror white */
+    color: #FFFFFF !important;
 }
 
-/* 5. Style the Labels (First Column) */
-.shellyTable td:first-child {
-    color: #AAAAAA !important; /* Dimmed gray for labels like 'Phase 1' */
-    font-weight: normal !important;
-}
-
-/* 6. Style the Data (Other Columns) */
-.shellyTable td {
-    color: #FFFFFF !important; /* Bright white for the actual values */
-}
-
-/* 7. Style the Total/Summary Row (if present) */
+/* Total/Summary Row (Highlighting the main consumption) */
 .shellyTable tr.totalRow td {
     background-color: transparent !important;
-    border-top: 1px solid #FFFFFF !important; /* A solid line to highlight the total */
     color: #FFFFFF !important;
-    font-size: 25px !important;
+    font-weight: bold !important;
+    font-size: 22px !important;
+    border-top: 1px solid #FFFFFF !important; /* Stronger line for total */
+    padding-top: 10px !important;
+}
+
+/* Standard MagicMirror Header Integration */
+/* This matches the captions seen in Screenshot 2026-05-03 at 19.23.00.jpg */
+.MMM-ShellyStatusTable .module-header {
+    color: #999 !important;
+    text-transform: uppercase;
+    font-size: 14px !important;
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    text-align: right; /* Matches the right-aligned headers in your screenshot */
+    border-bottom: 1px solid #666 !important;
+    line-height: 1.2;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
